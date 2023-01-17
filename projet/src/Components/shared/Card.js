@@ -1,5 +1,6 @@
 import React from 'react';
 import bootstrap from 'bootstrap'
+import { addFavoris } from '../../actions/FavoriteActions';
 const Card = ({movie}) => {
     const dateFormater = (date) => {
         let [yy, mm, dd] = date.split("-");
@@ -17,7 +18,11 @@ const Card = ({movie}) => {
 
 
 <div className="card" style={style}>
-    <span>+</span>
+   
+   <div>
+    <button className="button-addfav" onClick={() => addFavoris(movie.title)}>+</button>
+   </div>
+    
   <div className="card-body">
     <h5 className="card-title">{movie.title}</h5>
     {movie.release_date ? (
@@ -25,7 +30,7 @@ const Card = ({movie}) => {
       ) : null}
       <a href={`details/${movie.id}` }  class="card-link" >test</a>
     <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p className="card-text"></p>
     
   </div>
 </div>
