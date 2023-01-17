@@ -1,10 +1,9 @@
 import MovieList from "../MovieList";
-// import Footer from "../components/Footer";
 
-const Home = ({movies1,movies2}) => {
+const Home = ({movies1,movies2,Tv}) => {
     return (
         <>
-            <MovieList movies1={movies1} movies2={movies2} />
+            <MovieList movies1={movies1} movies2={movies2} Tv={Tv} />
         </>
     );
 };
