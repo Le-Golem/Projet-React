@@ -1,6 +1,7 @@
 import React from 'react';
 import bootstrap from 'bootstrap'
 import { addFavoris } from '../../actions/FavoriteActions';
+import { addFavoris } from '../../actions/FavoriteActions';
 import { useDispatch } from "react-redux";
 
 const Card = ({movie}) => {
