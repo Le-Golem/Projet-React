@@ -1,0 +1,27 @@
+.NotFound {
+  font-size: x-large;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  font-weight: 900;
+  h1 {
+    padding-bottom: 70px;
+    // background-color: aqua;
+  }
+  p {
+    font-size: 50px;
+    margin-bottom: 0px;
+  }
+  .SadFace {
+    margin-left: 20px;
+  }
+  .Icon {
+    cursor: pointer;
+  }
+}
