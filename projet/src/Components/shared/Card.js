@@ -1,12 +1,13 @@
 import React from 'react';
-import bootstrap from 'bootstrap'
+//import bootstrap from 'bootstrap'
 import { addFavoris } from '../../actions/FavoriteActions';
 import { addFavoris } from '../../actions/FavoriteActions';
 import { useDispatch } from "react-redux";
 
+import { useDispatch } from "react-redux";
+
 const Card = ({movie}) => {
   const dispatch = useDispatch();
-
     const dateFormater = (date) => {
         let [yy, mm, dd] = date.split("-");
         return [dd, mm, yy].join("/");
