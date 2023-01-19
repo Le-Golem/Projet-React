@@ -19,6 +19,7 @@ import {
   faArrowLeft,
   faFaceSadCry,
 } from "@fortawesome/free-solid-svg-icons";
+import Requete from "./Requete";
 
 library.add(faStar, faSearch, faHome, faGear, faArrowLeft, faFaceSadCry);
 
@@ -28,7 +29,7 @@ function App() {
       <Router>
         <Nav />
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* <Route path="/" element={<Requete />} /> */}
           <Route path="/favory" element={<Favory />} />
           <Route path="/movie:id" element={<Movie />} />
           <Route path="/search" element={<Search />} />

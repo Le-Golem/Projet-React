@@ -1,12 +1,10 @@
 import MovieList from "../MovieList";
-// import Footer from "../components/Footer";
 
-const Home = ({movies1,movies2}) => {
+const Home = ({movies1,movies2,séries,séries2}) => {
     return (
         <>
-            <MovieList movies1={movies1} movies2={movies2} />
+            <MovieList movies1={movies1} movies2={movies2} séries={séries} séries2={séries2} />
         </>
     );
 };
-
 export default Home;

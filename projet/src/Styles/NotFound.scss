@@ -4,15 +4,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: black;
+  background-color: rgb(42, 42, 42);
   color: white;
   position: absolute;
+  left: 0px;
   height: 100%;
   width: 100%;
   font-weight: 900;
   h1 {
     padding-bottom: 70px;
-    // background-color: aqua;
   }
   p {
     font-size: 50px;
