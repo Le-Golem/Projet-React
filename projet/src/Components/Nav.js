@@ -26,7 +26,6 @@ function Nav() {
       <div
         id="AnimIconHouse"
         onMouseEnter={() => handleMouseIcon("#AnimIconHouse")}
-        // onMouseLeave={() => handleMouseIcon("#AnimIconHouse")}
         onClick={() => handleClick("/")}
       >
         <FontAwesomeIcon icon="fa-solid fa-house" />
@@ -34,7 +33,6 @@ function Nav() {
       <div
         id="AnimIconSearch"
         onMouseEnter={() => handleMouseIcon("#AnimIconSearch")}
-        // onMouseLeave={() => handleMouseIcon("#AnimIconSearch")}
         onClick={() => handleClick("/search")}
         className="search"
       >
@@ -43,7 +41,6 @@ function Nav() {
       <div
         id="AnimIconFavory"
         onMouseEnter={() => handleMouseIcon("#AnimIconFavory")}
-        // onMouseLeave={() => handleMouseIcon("#AnimIconFavory")}
         onClick={() => handleClick("/favory")}
         className="favory"
       >
@@ -52,7 +49,6 @@ function Nav() {
       <div
         id="AnimIconSetting"
         onMouseEnter={() => handleMouseIcon("#AnimIconSetting")}
-        // onMouseLeave={() => handleMouseIcon("#AnimIconSetting")}
         onClick={() => handleClick("/setting")}
         className="setting"
       >
