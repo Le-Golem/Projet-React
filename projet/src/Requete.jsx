@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import {topRatedMovies1 ,Films ,Séries,Séries2} from "./api";
 
-import Home from "./views/home";
+import Home from "./Components/pages/home";
 
 
 const Requete = () => {

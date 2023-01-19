@@ -1,5 +1,5 @@
 import React from 'react';
-//import bootstrap from 'bootstrap'
+import bootstrap from 'bootstrap'
 import { addFavoris } from '../../actions/FavoriteActions';
 import { useDispatch } from "react-redux";
 
@@ -10,6 +10,9 @@ const Card = ({movie}) => {
         let [yy, mm, dd] = date.split("-");
         return [dd, mm, yy].join("/");
       };
+
+
+      
       let style = {
       with: '18rem',
       backgroundImage: `url("${ movie.poster_path
@@ -32,7 +35,7 @@ const Card = ({movie}) => {
     {movie.release_date ? (
         <h5>Sorti le : {dateFormater(movie.release_date)}</h5>
       ) : null}
-      <a href={`details/${movie.id}` }  class="card-link" >test</a>
+      <a href={`details/${movie.title.split(' ')}/${movie.id}` }  class="card-link" >test</a>
     <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
     <p className="card-text"></p>
     
