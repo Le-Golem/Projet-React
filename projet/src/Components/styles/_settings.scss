@@ -57,6 +57,30 @@ input[type="text"] {
   transition: border-color 0.2s;
 }
 
+.genreCard {
+  margin: 6px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row-detail {
+  margin-top: 100px;
+}
+.listCard {
+ 
+  border-radius: 18px;
+  padding: 0px 7px;
+  margin: 0 4px 4px 0;
+  font-size: 1.1rem;
+}
+
+.active-btn {
+  background-color: red;
+}
+
+.detailsCard {
+margin-top: 100px;
+}
 input[type="text"]:focus {
   transition: all 0.5s;
   box-shadow: 0 0 40px #f9d442b9;
@@ -64,9 +88,20 @@ input[type="text"]:focus {
   outline: none;
 }
 
+.tagColor {
+  color: #5c5c5c;
+}
+
+.container-details  {
+  background-color:#000000;
+}
 form.search-form {
   display: flex;
   justify-content: center;
+}
+
+.pd-wrap h1 {
+  color: white;
 }
 
 label {
@@ -132,4 +167,39 @@ button.search-submit {
   background: #d4b743;
   color: #292826;
   outline: 0;
+}
+
+
+@media (max-width: 767px) {
+  .carousel-inner .carousel-item > div {
+    display: none;
+  }
+  .carousel-inner .carousel-item > div:first-child {
+    display: block;
+  }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+  display: flex;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+
+  .carousel-inner .carousel-item-end.active,
+  .carousel-inner .carousel-item-next {
+    transform: translateX(25%);
+  }
+
+  .carousel-inner .carousel-item-start.active, 
+  .carousel-inner .carousel-item-prev {
+    transform: translateX(-25%);
+  }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start { 
+  transform: translateX(0);
 }
