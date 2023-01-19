@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 import "./App.scss";
 import Nav from "./Components/Nav";
 import Favory from "./Contents/Favory";
+import Favoris from "./views/Favoris";
 import Home from "./Contents/Home";
 import Movie from "./Contents/Movie";
 import Search from "./Components/pages/Search";
@@ -24,13 +25,16 @@ import DetailsCard from "./Components/shared/DetailsCard";
 library.add(faStar, faSearch, faHome, faGear, faArrowLeft, faFaceSadCry);
 
 function App() {
+  // const  {favorites} = useSelector((state) => state.FavoriteReducer);
+  // console.log("favorites: " + favorites)
+
   return (
     <div className="App">
       <Router>
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/favory" element={<Favory />} />
+          <Route path="/favory" element={<Favoris />} />
           <Route path="/movie:id" element={<Movie />} />
           <Route path="/search" element={<Search/>} />
           <Route path="/setting" element={<Setting />} />

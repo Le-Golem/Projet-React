@@ -12,9 +12,9 @@ const FavoriteReducer = (state = initialState, action = {}) => {
         case "DELETE_FAVORIS":
             return {
                 ...state,
-                favorites: state.favorites.filter((favorite) => favorite.favID !== action.payload.fav.favID),
+                favorites: state.favorites.filter((favorite) => favorite !== action.payload.fav),
             }
-            default: 
+        default: 
                 return state    
     }
 }

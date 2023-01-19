@@ -1,7 +1,11 @@
 import React from 'react';
-import bootstrap from 'bootstrap'
+//import bootstrap from 'bootstrap'
 import { addFavoris } from '../../actions/FavoriteActions';
+import { useDispatch } from "react-redux";
+
 const Card = ({movie}) => {
+  const dispatch = useDispatch();
+
     const dateFormater = (date) => {
         let [yy, mm, dd] = date.split("-");
         return [dd, mm, yy].join("/");
@@ -20,7 +24,7 @@ const Card = ({movie}) => {
 <div className="card" style={style}>
    
    <div>
-    <button className="button-addfav" onClick={() => addFavoris(movie.title)}>+</button>
+    <button className="button-addfav" onClick={() => dispatch(addFavoris(movie))}>+</button>
    </div>
     
   <div className="card-body">
