@@ -1,9 +1,6 @@
 import React from 'react';
 //import bootstrap from 'bootstrap'
 import { addFavoris } from '../../actions/FavoriteActions';
-import { addFavoris } from '../../actions/FavoriteActions';
-import { useDispatch } from "react-redux";
-
 import { useDispatch } from "react-redux";
 
 const Card = ({movie}) => {
@@ -18,7 +15,7 @@ const Card = ({movie}) => {
       let style = {
       with: '18rem',
       backgroundImage: `url("${ movie.poster_path
-           ? "https://image.tmdb.org/t/p/original/" + movie.poster_path
+           ? "https://image.tmdb.org/t/p/original" + movie.poster_path
            : "./img/poster.jpg" }")`,
            backgroundSize: 'cover'
       }

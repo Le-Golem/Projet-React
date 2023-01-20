@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "./App.scss";
 import Nav from "./Components/Nav";
-import Favory from "./Contents/Favory";
+//import Favory from "./Contents/Favory";
 import Favoris from "./views/Favoris";
-import Home from "./Contents/Home";
-import Movie from "./Contents/Movie";
+//import Home from "./Contents/Home";
+//import Movie from "./Contents/Movie";
 import Search from "./Components/pages/Search";
 import Setting from "./Contents/Setting";
 import NotFound from "./Contents/NotFound";
@@ -33,6 +33,7 @@ function App() {
     <div className="App">
       <Router>
         <Nav />
+        <div style={{width:"90%"}}>
         <Routes>
           <Route path="/" element={<Requete/>} />
           <Route path="/favory" element={<Favoris />} />
@@ -41,7 +42,9 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/details/:nameMovie/:movieId" element={<DetailsCard />} />
         </Routes>
+        </div>
       </Router>
+    
     </div>
   );
 }
