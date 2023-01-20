@@ -34,7 +34,7 @@ const Card = ({movie}) => {
       ) : null}
       <a href={`details/${movie.title.replace(/\s/g, "-")}/${movie.id}` }  class="card-link" >Details</a>
    
-    <p className="card-text">{movie.overview ? movie.overview : "Aucun synopsis"}</p>
+    <p className="card-text"></p>
     
   </div>
 </div>

@@ -9,11 +9,11 @@ const Favoris = () => {
         <>
         <div className="container-favoris">
             <div className="container-logo-title">
-                <img className="logo-flix-favoris" src="/logo.png" alt=""/> 
+            <img className="logo-flix-favoris" src="./logo.png" alt=""/>    
                 
             </div>
-      
-            <h2 className="favoris-h2">Mes favoris</h2>  
+            <h2 className="favoris-h2">Mes favoris</h2>   
+           
             <div className="card-favoris">
            
                {
@@ -25,7 +25,7 @@ const Favoris = () => {
                     <h2>Aucun coup de coeur pour le moment </h2>
                   )
                   
-               }
+            }
                
               
             </div>

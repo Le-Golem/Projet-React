@@ -23,11 +23,11 @@ import Requete from "./Requete";
 library.add(faStar, faSearch, faHome, faGear, faArrowLeft, faFaceSadCry);
 
 function App() {
-  const [rr, setRr] = useState()
   return (
     <div className="App">
       <Router>
         <Nav />
+        <div style={{width:"98%"}}>
         <Routes>
           <Route path="/" element={<Requete/>} />
           <Route path="/favory" element={<Favoris />} />
@@ -36,7 +36,10 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/details/:nameMovie/:movieId" element={<DetailsCard />} />
         </Routes>
+        </div>
+        
       </Router>
+    
     </div>
   );
 }

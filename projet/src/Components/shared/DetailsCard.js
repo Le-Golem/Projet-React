@@ -18,8 +18,7 @@ try {
 
   axios.get(`https://api.themoviedb.org/3/search/movie?api_key=65bb91b037f20d50a722883e4a68fe58&query=${nameMovie}&language=fr-FR`)
   .then((res) => setMoviesDatas(res.data.results))
-  .then( (res) => { return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=65bb91b037f20d50a722883e4a68fe58&query=${nameMovie}&language=fr-FR`)})
-  .then((res) => setData(res.data.results ));
+
 
 } catch(err)
 
@@ -173,11 +172,11 @@ const Refresh = () =>
                 <div className="product-info-tabs">
                  <ul className="nav nav-tabs" id="myTab" role="tablist">
                    <li className="nav-item" onClick={() => setSignUp(true)}>
-                         <a  className={" nav-link active tagColor"} style={signUp ? {backgroundColor: 'red'} : {backgroundColor: 'unset'}} id="description-tab" data-toggle="tab"  role="tab" aria-controls="description" aria-selected="true">Synopsis</a>
+                         <a  className={" nav-link active tagColor"} style={signUp ? {backgroundColor: 'red', color: 'white'} : {backgroundColor: 'unset'}} id="description-tab" data-toggle="tab"  role="tab" aria-controls="description" aria-selected="true">Synopsis</a>
                      </li>
                     <li className="nav-item" onClick={() => setSignUp(false)}>
                      {console.log(signUp)}
-                     <a    className={  "active-btn nav-link  tagColor"} style={signUp ? {backgroundColor: 'unset'} : {backgroundColor: 'red'}}id="review-tab" data-toggle="tab"  role="tab" aria-controls="review" aria-selected="false">Reviews (0)</a>
+                     <a    className={  "active-btn nav-link  tagColor"} style={signUp ? {backgroundColor: 'unset'} : {backgroundColor: 'red',  color: 'white'}}id="review-tab" data-toggle="tab"  role="tab" aria-controls="review" aria-selected="false">Reviews (0)</a>
                    </li>
                  </ul>
                 <div className="tab-content" id="myTabContent">

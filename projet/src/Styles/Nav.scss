@@ -1,11 +1,11 @@
 .Nav {
   background-color: rgba(0, 0, 0, 0.655);
   height: 100vh;
-  width: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
 
   > div {
     width: 20px;
@@ -17,4 +17,8 @@
     size: 2;
     opacity: 0.5;
   }
+}
+.nav-link {
+  border: none;
+  border-color: none;
 }

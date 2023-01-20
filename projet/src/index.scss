@@ -19,6 +19,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #141414;
 }
 
 code {
@@ -32,7 +33,6 @@ body {
   background-color: #141414;
   color: #e5e5e5;
 }
-
 / Header styles /
 header {
   display: flex;
@@ -40,17 +40,14 @@ header {
   justify-content: space-between;
   padding: 20px;
 }
-
 .logo {
   color: #e50914;
   font-size: 22px;
   text-decoration: none;
 }
-
 nav {
   display: flex;
 }
-
 nav ul {
   display: flex;
   list-style: none;
@@ -60,22 +57,18 @@ nav ul {
 nav li {
   margin: 0 10px;
 }
-
 nav a {
   color: #636363;
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
 }
-
 nav a:hover {
   color: #e5e5e5;
 }
-
 form {
   display: flex;
 }
-
 form input {
   border: none;
   background-color: #141414;
@@ -83,7 +76,6 @@ form input {
   font-size: 14px;
   padding: 10px;
 }
-
 form button {
   border: none;
   background-color: #e50914;
@@ -92,9 +84,7 @@ form button {
   padding: 10px 20px;
   cursor: pointer;
 }
-
 / Hero section styles  /
-
 / .hero {
   display: flex;
   align-items: center;
@@ -104,24 +94,20 @@ form button {
   background-size: cover;
   background-position: center;
 } /
-
 .hero-text {
   text-align: center;
   color: white;
 }
-
 .hero-text h1 {
   font-size: 32px;
   font-weight: 500;
   margin: 0;
 }
-
 .hero-text p {
   font-size: 14px;
   font-weight: 300;
   margin: 20px 0;
 }
-
 .hero-text button {
   border: none;
   background-color: #e50914;
@@ -130,7 +116,6 @@ form button {
   padding: 10px 20px;
   cursor: pointer;
 }
-
 / Featured section styles  */
 .featured {
   padding: 20px;

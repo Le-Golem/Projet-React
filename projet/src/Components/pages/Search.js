@@ -18,6 +18,10 @@ const Search = () => {
     console.log(search)
     return (
         <div className="form-component">
+           <div className="container-logo-title">
+                <img className="logo-flix-favoris" src="./logo.png" alt=""/> 
+                  
+            </div>
          <div className="wrapper">
      <div className="container">
       <form role="search" method="get" className="search-form form" action="">

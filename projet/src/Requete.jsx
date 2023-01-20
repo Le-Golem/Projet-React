@@ -1,35 +1,59 @@
 import "axios";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import {topRatedMovies1 ,Films ,Séries,Séries2} from "./api";
-
+import {topRatedMoviesUrl ,allMoviesUrl ,popularMoviesUrl,popularTvShowsUrl, popularTvShowsUrl2, movieGenresUrl} from "./api";
 import Home from "./Components/pages/home";
+import MovieList from "./MovieList";
 
 
 const Requete = () => {
-    const [movies1, setMovies1] = useState([]);
-    const [movies2, setMovies2] = useState([]);
-    const [séries, setSéries ] = useState([]);
-    const [séries2, setSéries2 ] = useState([]);
+    const [movies, setMovies] = useState([]);
+    const [movieGenres, setMovieGenres] = useState([]);
+
+    const [popularMovies, setPopularMovies ] = useState([]);
+    const [topRatedMovies, setTopRatedMovies ] = useState([]);
+
+    const [popularTvShows, setPopularTvShows] = useState([]);
+    const [topRatedTvShows, setTopRatedTvShows] = useState([]);
+  
 
     useEffect(() => {
-        axios.get(topRatedMovies1).then((response) => {
-            setMovies1(response.data.results);
+        let cumulatedMovies = []
+
+        for( let p = 1; p < 21; p++){
+            axios.get(allMoviesUrl+p).then((response) => {
+                response.data.results.forEach(movie => {
+                    cumulatedMovies.push(movie)
+                })
+              
+            })
+        }
+
+        setMovies(cumulatedMovies)
+        axios.get(topRatedMoviesUrl).then((response) => {
+            setTopRatedMovies(response.data.results);
         });
-        axios.get(Films).then((response) => {
-            setMovies2(response.data.results);
+        axios.get(popularMoviesUrl).then((response) => {
+            setPopularMovies(response.data.results);
         });
-        axios.get(Séries).then((response) => {
-            setSéries(response.data.results);
+        axios.get(popularTvShowsUrl).then((response) => {
+            setPopularTvShows(response.data.results);
         });
-        axios.get(Séries2).then((response) => {
-            setSéries2(response.data.results);
+        axios.get(popularTvShowsUrl2).then((response) => {
+            setTopRatedTvShows(response.data.results);
+        });
+        axios.get(movieGenresUrl).then((response) => {
+            setMovieGenres(response.data.genres);
         });
     }, []);
 
+    
     return (
         <>
-            <Home  movies1={movies1} movies2={movies2} séries={séries} séries2={séries2} /> 
+           
+            <MovieList movies={movies} movieGenres={movieGenres} topRatedMovies={topRatedMovies} popularMovies={popularMovies} popularTvShows={popularTvShows} topRatedTvShows={topRatedTvShows}/> 
+
+            {/* <Home  movies1={movies1} movies2={movies2} séries={séries} séries2={séries2} Horror1={Horror1} Action1={Action1} SF1={SF1} Horror2={Horror2} allMovies={allMoviesList}/> */}
         </>
     );
 };
