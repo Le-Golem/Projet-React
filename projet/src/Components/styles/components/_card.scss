@@ -19,7 +19,10 @@
     bottom: 0;
     border-radius: 0 0 30px 30px;
   }
-
+.card-text 
+{
+  overflow-y: scroll;
+}
   img {
     width: 80%;
     height: 254px;
@@ -50,6 +53,13 @@
     span {
       font-size: 0.7rem;
     }
+  }
+  .card-body a 
+  {
+    list-style: none;
+    text-decoration: none;
+    color: beige;
+
   }
   ul {
     margin: 6px 0;

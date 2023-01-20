@@ -1,25 +1,32 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import Carousel from './Carousel';
 
 
 const DetailsCard = () => {
   const {nameMovie, movieId} = useParams();
   const [moviesDatas, setMoviesDatas] = useState([]);
-  const [test, setTest] = useState([])
-  const [tr, setTr] = useState('')
-  const [filterMovie, setFilterMovie] = useState([])
+  const [Data, setData] = useState([]);
+  const [refresh, setRefresh] = useState([]);
+  const [filterMovie, setFilterMovie] = useState([]);
   const [signUp, setSignUp] = useState(true);
+
   useEffect(() => {
   
-   axios.get(`https://api.themoviedb.org/3/search/movie?api_key=65bb91b037f20d50a722883e4a68fe58&query=${nameMovie}&language=fr-FR`)
-   .then((res) => setMoviesDatas(res.data.results))
-   .then( (res) => { return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=65bb91b037f20d50a722883e4a68fe58&query=${nameMovie}&language=fr-FR`)})
-   .then((res) => setTest(res.data.results ))
-   .then( (res) => { return axios.get( `https://api.themoviedb.org/3/discover/movie?api_key=65bb91b037f20d50a722883e4a68fe58&with_genres=28 `)}) 
-   .then((res) => setFilterMovie(res.data.results ))
-  },[movieId])
-const test2 = moviesDatas.filter(mv =>   mv.id == movieId )
+try {
+
+  axios.get(`https://api.themoviedb.org/3/search/movie?api_key=65bb91b037f20d50a722883e4a68fe58&query=${nameMovie}&language=fr-FR`)
+  .then((res) => setMoviesDatas(res.data.results))
+  .then( (res) => { return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=65bb91b037f20d50a722883e4a68fe58&query=${nameMovie}&language=fr-FR`)})
+  .then((res) => setData(res.data.results ));
+
+} catch(err)
+
+{
+  console.log(err)
+}
+  },[nameMovie])
 
 console.log(filterMovie)
   const dateFormater = (date) => {
@@ -27,15 +34,12 @@ console.log(filterMovie)
    return [dd, mm, yy].join("-");
  };
  
-
- console.log(test2)
- const genreFinder =  () => {
-    let genreArray = [];
-    
-return test2.map((elm) => {
-
+ const genreFinder = (props) => {
+    let genreArray = []; 
+ 
+console.log(props)
+return moviesDatas.filter(mv =>   mv.id == movieId )?.map((elm) => {
    for (let index = 0; index < elm.genre_ids.length; index++) {
-
 
         switch (elm.genre_ids[index]) {
           case 28:
@@ -100,18 +104,22 @@ return test2.map((elm) => {
         }
   
       }
+
       return genreArray.map((genre) => <li key={genre} className='listCard tagColor'>{genre}</li>);
 }
-
  ) 
   };
 
-  let items = document.querySelectorAll('.carousel .carousel-item')
 
+
+
+const Refresh = () =>
+{
+  let items = document.querySelectorAll('.carousel .carousel-item')
   items.forEach((el) => {
     const minPerSlide = 4
     let next = el.nextElementSibling
-    for (var i=1; i<minPerSlide; i++) {
+    for (var i=1; i <minPerSlide; i++) {
       if (!next) {
           // wrap carousel by using first child
           next = items[0]
@@ -121,10 +129,15 @@ return test2.map((elm) => {
       next = next.nextElementSibling
   }
 })
+  setTimeout(() => {
+    setRefresh(1 + 1)
+  }, 100);
+}
 
    return (
-    test2.map((mov) => ( 
-  
+
+    moviesDatas.filter(mv =>   mv.id == movieId )?.map((mov) => ( 
+ 
   <div className='container-details'>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
         {/*---- Include the above in your HEAD tag --------*/}
@@ -132,133 +145,78 @@ return test2.map((elm) => {
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" /><div className="pd-wrap ">
-          <div className="container2">
+           <div className="container2">
         
             <div className="row row-detail" style={{marginLeft: '15px',   marginRight: '0'}}>
               <div className="col-md-6" >
                <img src={
               "https://image.tmdb.org/t/p/original/" + mov.poster_path} alt="" srcset=""  style={{width: '60%',     marginLeft: '50px'}}/>
 
-              </div>
+            </div>
               <div className="col-md-6 detailsCard">
                 <div className="product-dtl">
                   <div className="product-info">
                 <h1>{mov.title}</h1>
                     <div className="product-price-discount"><span> {mov.release_date ? (
-                 <h5 className='tagColor'> {dateFormater(mov.release_date)}  / {mov.vote_average.toFixed(1)}<span>⭐</span></h5>
-                                ) : null} </span></div>
-                  </div>
+                 <h5 className='tagColor'> {dateFormater(mov.release_date)}  / {mov.vote_average.toFixed(1)}<span>⭐</span></h5> ) : null} </span>
                  
-                  <div className="row">
-                    <div className="col-md-6">
-                    <ul className='genreCard' style={{paddingLeft: '0'}}>
-                    { genreFinder() }
-                    </ul>
-                    </div>                    
-                  </div>                 
-                </div>
-                <div className="product-info-tabs">
-              <ul className="nav nav-tabs" id="myTab" role="tablist">
-              <li className="nav-item" onClick={() => setSignUp(true)}>
-                         <a  className={" nav-link active tagColor"} style={signUp ? {backgroundColor: 'red'} : {backgroundColor: 'unset'}} id="description-tab" data-toggle="tab"  role="tab" aria-controls="description" aria-selected="true">Synopsis</a>
-                    </li>
-                <li className="nav-item" onClick={() => setSignUp(false)}>
-                  {console.log(signUp)}
-                  <a    className={  "active-btn nav-link  tagColor"} style={signUp ? {backgroundColor: 'unset'} : {backgroundColor: 'red'}}id="review-tab" data-toggle="tab"  role="tab" aria-controls="review" aria-selected="false">Reviews (0)</a>
-                </li>
-              </ul>
-              <div className="tab-content" id="myTabContent">
-             {signUp ?  (
- 
-             
-                   <>
-                    
-                <div className="tab-pane fade show active tagColor" id="description" role="tabpanel" aria-labelledby="description-tab">
-                {mov.overview}
-                </div>
-                   </>
-
-             ) : ( 
-            <>
-               <div className="tab-pane fade show active tagColor" id="description" role="tabpanel" aria-labelledby="description-tab">
-                {mov.overview}
-                </div>
-            </>
-             )}
-
-                
+                 </div>
+               </div>   
+              <div className="row">
+                 <div className="col-md-6">
+                <ul className='genreCard' style={{paddingLeft: '0'}}>
+                 {genreFinder()}
+                  </ul>
+                </div>                    
+            </div>                 
               </div>
+                <div className="product-info-tabs">
+                 <ul className="nav nav-tabs" id="myTab" role="tablist">
+                   <li className="nav-item" onClick={() => setSignUp(true)}>
+                         <a  className={" nav-link active tagColor"} style={signUp ? {backgroundColor: 'red'} : {backgroundColor: 'unset'}} id="description-tab" data-toggle="tab"  role="tab" aria-controls="description" aria-selected="true">Synopsis</a>
+                     </li>
+                    <li className="nav-item" onClick={() => setSignUp(false)}>
+                     {console.log(signUp)}
+                     <a    className={  "active-btn nav-link  tagColor"} style={signUp ? {backgroundColor: 'unset'} : {backgroundColor: 'red'}}id="review-tab" data-toggle="tab"  role="tab" aria-controls="review" aria-selected="false">Reviews (0)</a>
+                   </li>
+                 </ul>
+                <div className="tab-content" id="myTabContent">
+              <div>
 
- <div class="container text-center my-3">
+              {signUp ?  (    
+              <> 
+           {mov.overview ? (<>
+            <div className="tab-pane fade show active tagColor" id="description" role="tabpanel" aria-labelledby="description-tab">
+            {mov.overview}
+            </div>
+           </>
+           ) : (<div className="tab-pane fade show active tagColor" id="description" role="tabpanel" aria-labelledby="description-tab">
+              <h1>Aucun synopsis</h1>
+                </div>
+
+            )}
+
+            </>
+
+           ) : ( 
+              <>
+            <div className="tab-pane fade show active tagColor" id="description" role="tabpanel" aria-labelledby="description-tab">
+{mov.overview}
+          </div>
+          </>
+         )}
+
+            </div>
+  {
+    mov?.genre_ids[0] ? (
+    <>
+    
+  <div class="container text-center my-3" >
 		<div class="row mx-auto my-auto justify-content-center">
 			<div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
 				<div class="carousel-inner" role="listbox">
-
-					<div class="carousel-item active">
-						<div class="col-md-3">
-							<div class="card">
-								<div class="card-img">
-									<img src="https://via.placeholder.com/700x500.png/CB997E/333333?text=1" class="img-fluid"/>
-								</div>
-								<div class="card-img-overlay">Slide 1</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="carousel-item">
-						<div class="col-md-3">
-							<div class="card">
-								<div class="card-img">
-									<img src="https://via.placeholder.com/700x500.png/DDBEA9/333333?text=2" class="img-fluid"/>
-								</div>
-								<div class="card-img-overlay">Slide 2</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="carousel-item">
-						<div class="col-md-3">
-							<div class="card">
-								<div class="card-img">
-									<img src="https://via.placeholder.com/700x500.png/FFE8D6/333333?text=3" class="img-fluid"/>
-								</div>
-								<div class="card-img-overlay">Slide 3</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="carousel-item">
-						<div class="col-md-3">
-							<div class="card">
-								<div class="card-img">
-									<img src="https://via.placeholder.com/700x500.png/B7B7A4/333333?text=4" class="img-fluid"/>
-								</div>
-								<div class="card-img-overlay">Slide 4</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="carousel-item">
-						<div class="col-md-3">
-							<div class="card">
-								<div class="card-img">
-									<img src="https://via.placeholder.com/700x500.png/A5A58D/333333?text=5" class="img-fluid"/>
-								</div>
-								<div class="card-img-overlay">Slide 5</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="carousel-item">
-						<div class="col-md-3">
-							<div class="card">
-								<div class="card-img">
-									<img src="https://via.placeholder.com/700x500.png/6B705C/eeeeee?text=6" class="img-fluid" />
-								</div>
-								<div class="card-img-overlay">Slide 6</div>
-							</div>
-						</div>
-					</div>
+       <Carousel genre={mov?.genre_ids[0]} />
+          {Refresh()}
 				</div>
         
 				<a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
@@ -271,15 +229,22 @@ return test2.map((elm) => {
 		</div>		
 	</div>
 
-            </div>
-              </div>
-              
-            </div>
-           
-          
-          </div>
-        </div>
+    </>
+
+  ):(
+  <h1> aucun film en commun </h1>
+  )
+}
+
+                
+                   </div>
+              </div>        
+           </div>             
+        </div>      
       </div>
+   </div>
+</div>
+
     ))
   )
 };

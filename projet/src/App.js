@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./App.scss";
@@ -23,6 +23,7 @@ import Requete from "./Requete";
 library.add(faStar, faSearch, faHome, faGear, faArrowLeft, faFaceSadCry);
 
 function App() {
+  const [rr, setRr] = useState()
   return (
     <div className="App">
       <Router>
