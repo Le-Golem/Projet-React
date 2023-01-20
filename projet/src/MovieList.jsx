@@ -56,7 +56,7 @@ console.log(moviesByGenre)
         {/* Pour chaque film par genres, on affiche un titre avec le nom du genre et on parcours tous les films du genre pour les afficher */}
         {moviesByGenre.length > 0 && moviesByGenre.map((movieGenre, i)=> (
             <>
-             <h4>{movieGenre.genre}</h4>
+             <h4 className="title-homepage">{movieGenre.genre}</h4>
             <div className="slider-style">
                
                 {movieGenre.movies.map(movie => <img key={movie.id} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} width="250" height="auto"/>)}
