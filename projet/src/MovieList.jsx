@@ -64,6 +64,18 @@ console.log(moviesByGenre)
             </>
         ))}
 
+    <h4 className="title-homepage-first">Séries populaires</h4>
+    <div className="slider-style-movie1">
+
+        {popularTvShows && popularTvShows.length > 0 && popularTvShows.map(movie => <img key={movie.id} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} width="250" height="auto"/>)}
+    </div>
+
+    <h4 className="title-homepage-first">Séries les mieux notées</h4>
+    <div className="slider-style">
+
+        {topRatedTvShows && topRatedTvShows.length > 0 && topRatedTvShows.map(movie => <img key={movie.id} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} width="250" height="auto"/>)}
+    </div>
+
     {/* <div className="slider-style">
             <h2>Séries</h2>
         {séries.length > 0 && séries.map(movie => <img key={movie.id} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} width="250" height="auto"/>)}
@@ -81,20 +93,6 @@ console.log(moviesByGenre)
        {Action1 && Action1.length > 0 && Action1.map((movie) => <img key={movie.id} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} width="250" height="auto"/>)}
     </div> */}
 
-   
-
-   
-    {display === 'series' && <div>
-    <h2>Les Séries populaires </h2>
-            {/* <Slider {...settings}>
-                {séries.length > 0 && séries.map((movie) => <Movie key={movie.id} movie={movie} />)}
-            </Slider> */}
-    <h2>Les Séries populaires 2</h2>
-            {/* <Slider {...settings}>
-                {séries2.length > 0 && séries2.map((movie) => <Movie key={movie.id} movie={movie} />)}
-            </Slider> */}
-        </div>}
-    
         </>
     );
 };
